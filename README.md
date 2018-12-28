@@ -16,10 +16,10 @@ $ npm run start
 $ npm run build
 ```
 
-## Test
+## Deploy to Github Pages
 
 ```
-$ npm run test
+$ npm run deploy
 ```
 
 ## npm v4.2.0

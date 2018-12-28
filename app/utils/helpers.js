@@ -11,3 +11,7 @@ export function generateFormValues(formStructure) {
 export function formatWeekDay(date) {
   return new Date(date).toString().split(' ')[0];
 }
+
+export function arrayNthElements(array, n) {
+  return array.filter((e, i) => i % n === 0);
+}

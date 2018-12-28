@@ -58,7 +58,7 @@ class App extends React.Component {
           <div className="text-right">
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-primary"
               onClick={this._submitSearchForm}
               disabled={searchDisabled}
             >
@@ -73,11 +73,11 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   forecasts: state.forecasts,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   requestForecast: (city, mode, index) => dispatch(requestForecast(city, mode, index)),
   pinForecast: (forecast) => dispatch(pinForecast(forecast)),
 });

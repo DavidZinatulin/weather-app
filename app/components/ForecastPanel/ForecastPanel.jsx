@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import './ForecastPanel.scss';
-import { formatWeekDay } from 'app/utils/helpers';
+import { formatWeekDay, arrayNthElements } from 'app/utils/helpers';
 
 const ForecastPanel = ({ data, index, onPin, onRefresh }) => {
   const { weather, main, error, name, city, list } = data;
@@ -24,12 +24,12 @@ const ForecastPanel = ({ data, index, onPin, onRefresh }) => {
   );
 
   const pinButton = onPin &&
-    <button type="button" className="btn btn-primary" onClick={() => onPin(data)}>
+    <button type="button" className="btn btn-outline-secondary" onClick={() => onPin(data)}>
       Pin forecast
     </button>;
 
   const refreshButton = onRefresh &&
-    <button type="button" className="btn btn-success" onClick={() => onRefresh(cityName, mode, index + 1)}>
+    <button type="button" className="btn btn-outline-secondary" onClick={() => onRefresh(cityName, mode, index + 1)}>
       Refresh
     </button>;
 
@@ -46,15 +46,14 @@ const ForecastPanel = ({ data, index, onPin, onRefresh }) => {
 
   const forecast = list &&
     <div className="row">
-      {/*{console.log(list.filter((e, i) => i % 8 === 8 - 1))}*/}
-      {list.filter((e, i) => i % 8 === 0).map((item, key) => (
+      {arrayNthElements(list, 8).map((item, key) => (
         <div key={key} className="col-4 col-sm-2">
           {renderIcon(item.weather[0], item.main, item.dt_txt)}
         </div>
       ))}
     </div>;
 
-  const errorMessage = error && <p>Error: {error}</p>;
+  const errorMessage = error && <p className="text-center">Error: {error}</p>;
 
   const loadingIcon = _.isEmpty(data) && <p className="text-center">loading...</p>;
 
