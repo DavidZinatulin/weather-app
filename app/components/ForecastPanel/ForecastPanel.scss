@@ -1,0 +1,47 @@
+@import '~app/styles/vars';
+
+.forecast-panel {
+  min-height: 205px;
+  padding: 15px;
+  background: $forecast-panel-background;
+
+  &__heading {
+    display: flex;
+    padding-bottom: 15px;
+
+    > div {
+      flex-grow: 1;
+    }
+  }
+
+  &__icon {
+    width: 65px;
+    height: 85px;
+    text-align: center;
+    display: inline-block;
+
+    img {
+      max-width: 70%;
+      height: auto;
+      opacity: .5;
+    }
+  }
+
+  &__temp {
+    display: flex;
+  }
+
+  &__temp-min {
+    flex-grow: 1;
+    color: map-get($temperature, min);
+  }
+
+  &__temp-max {
+    flex-grow: 1;
+    color: map-get($temperature, max);
+  }
+
+  &__weekday {
+    font-size: 12px;
+  }
+}
